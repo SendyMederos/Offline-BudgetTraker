@@ -143,6 +143,11 @@ function sendTransaction(isAdding) {
     amountEl.value = "";
   });
 }
+function saveRecord(data) {
+  const tx2 = db.transaction([storeName], 'readwrite');
+  const objStore = tx2.objectStore(storeName);
+  objStore.add(data)
+}
 
 document.querySelector("#add-btn").onclick = function() {
   sendTransaction(true);
